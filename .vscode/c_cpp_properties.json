@@ -9,7 +9,6 @@
                 "/usr/lib/gcc/x86_64-redhat-linux/12/../../../../include/c++/12/backward",
                 "/usr/lib/gcc/x86_64-redhat-linux/12/include",
                 "/usr/local/include",
-                "/usr/local/include/soci",
                 "/usr/include"               
             ],
             "defines": [],

@@ -1,5 +1,9 @@
-#include <soci/soci.h>
 #include <iostream>
+#include <exception>
+#include <sqlext.h>
+#include <sqltypes.h>
+#include <sql.h>
+
 using namespace std;
 
 /*
@@ -24,7 +28,10 @@ int main() {
             cout << i << "\n";
         }        
         i++;
-    }    
+    }
+
+    
+    
 
     cout << "\nStructchaHandler has exited\n";
     return 0;
