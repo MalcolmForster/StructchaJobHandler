@@ -1,24 +1,29 @@
 #include <iostream>
 #include <fstream>
+#include <bitset>
 #include <string>
+
 using namespace std;
+
 int main()
 {
-    fstream newfile;
-    newfile.open("TestFileASCII.txt", ios::out); // open a file to perform write operation using file object
-    if (newfile.is_open())                       // checking whether the file is open
-    {
-        newfile << "Tutorials point \n"; // inserting text
-        newfile.close();                 // close the file object
-    }
-    newfile.open("tpoint.txt", ios::in); // open a file to perform read operation using file object
-    if (newfile.is_open())
+    fstream asciFile;
+    fstream binaryFile;
+
+    binaryFile.open("TestAnalysis.scan",ios::out); // open (or create) a file to save all the binary information into
+    asciFile.open("TestFileASCII.txt", ios::in); // open a file to perform read operation using file object
+
+    if (asciFile.is_open())
     { // checking whether the file is open
         string tp;
-        while (getline(newfile, tp))
+        while (getline(asciFile, tp))
         {                       // read data from file object and put it into string.
-            cout << tp << "\n"; // print the data of the string
+            for(size_t i = 0; i < tp.size(); i++) {
+                binaryFile << bitset<8>(tp.c_str()[i]); // print the data of the string
+            }            
         }
-        newfile.close(); // close the file object.
+        asciFile.close(); // close the file object.
+    } else {
+        cout << "Something went wrong opening the required files";
     }
 }

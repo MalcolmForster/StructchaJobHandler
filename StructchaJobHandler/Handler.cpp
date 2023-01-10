@@ -1,8 +1,8 @@
 #include <iostream>
 #include <exception>
-#include <sqlext.h>
-#include <sqltypes.h>
-#include <sql.h>
+// #include <sqlext.h>
+// #include <sqltypes.h>
+// #include <sql.h>
 
 using namespace std;
 
@@ -15,6 +15,7 @@ using namespace std;
 */ 
 
 int main() {
+    
     cout << "Starting StructchaHandler\n";
     cout << "...\n";
     //initialisation phase
@@ -29,9 +30,6 @@ int main() {
         }        
         i++;
     }
-
-    
-    
 
     cout << "\nStructchaHandler has exited\n";
     return 0;

@@ -22,7 +22,7 @@
 [[StructchaAnalysis>>HEADER]]
 
 
-// Start of Data, this is specific to the file that is being analysed
+// Start of Data, this is specific to the file that is being analyzed
 [[StructchaAnalysis<<DATA]]
 
 //For this test job type the software will create matrices based on a NUMBER, two formulas, and a SIZE.
@@ -33,5 +33,4 @@
 
 // End of Data
 [[StructchaAnalysis>>DATA]]
-
 
