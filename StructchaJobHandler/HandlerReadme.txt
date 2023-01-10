@@ -6,6 +6,7 @@ Parts of StructchaHandler:
 [JobChecker is not part of StructchaHandler as such, but important to note here to explain the flow through the software]
 0. JobChecker^
     - Checks if the job can be started, ie no errors and reports back to the client with feedback.
+    - These files are currently planned to be .scan (StructCha ANalysis) files, which are binary encoded files that transfer all the information needed for analysis on the server.
     - If all is ok, stores the job as ToDo in the corresponding databases.
 
 1. JobFinder

@@ -17,11 +17,11 @@ using namespace std;
 int main() {
     cout << "Starting StructchaHandler\n";
     cout << "...\n";
-    //initilisation phase
+    //initialisation phase
 
     cout << "StructchaHandler Started and running with no errors\n";
     cout << "Looking for tasks\n";
-
+    
     int i = 0;
     while(i < 1'000'000'000) {
         if(i % 100'000'000 == 0) {
