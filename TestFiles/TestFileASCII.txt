@@ -1,0 +1,36 @@
+// This is a comment and is ignored by Structcha analysis
+// This file is a simple txt file which is to carry information for testing the Handler backend software for Structcha
+// It is first converted into the .scan (STructcha ANalysis) file type, the default file type to transfer information about the analysis to be performed within the Structcha ecosystem
+// The .scan file type is of binary file format to save space and increase security, read more https://www.techtarget.com/whatis/definition/binary-file.
+
+// Start of Header of .scan file
+[[StructchaAnalysis<<HEADER]]
+
+// Declare job name
+[NAME]:TestAnalysis
+
+// Declare job company, this should be company ID in the future
+[COMPANY]:Structcha
+
+// Declare job user
+[USER]:Malcolm
+
+// Declare job type
+[TYPE]:Test
+
+// End of Header of .scan file
+[[StructchaAnalysis>>HEADER]]
+
+
+// Start of Data, this is specific to the file that is being analyzed
+[[StructchaAnalysis<<DATA]]
+
+//For this test job type the software will create matrices based on a NUMBER, two formulas, and a SIZE.
+[NUMBER]:67
+[FORMULA1]:sqrt(num)
+[FORMULA2]:(num * 3) / 8
+[SIZE]:20
+
+// End of Data
+[[StructchaAnalysis>>DATA]]
+

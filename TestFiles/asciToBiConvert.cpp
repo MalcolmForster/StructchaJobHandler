@@ -45,4 +45,6 @@ int main()
     } else {
         cout << "Something went wrong opening the required files";
     }
+
+    return 0;
 }

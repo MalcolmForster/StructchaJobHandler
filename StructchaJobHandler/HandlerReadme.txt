@@ -1,4 +1,4 @@
-Structcha Handler is a software which allows clients to upload Strutcha analysis files to the Structcha server to be processed.
+Structcha Handler is a software which allows clients to upload Structcha analysis files to the Structcha server to be processed.
 
 Parts of StructchaHandler:
 
