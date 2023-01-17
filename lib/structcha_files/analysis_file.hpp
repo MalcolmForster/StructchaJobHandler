@@ -14,25 +14,27 @@ or an error message to help with debugging of the file. The files taken in a mea
 class StructchaAnalysisFile
 {
 public:
-    string JobName;
-    string Company;
-    string User;
-    string Type;
+    string JobName = "";
+    string Company = "";
+    string User = "";
+    string Type = "";
     int number;
     int array1[5];
     int array2[5];
+
+    int errorNum = 0; // initiate an error code
 
     // Finds and extracts information in the HEADER section of the .scan file first
     /*
         TODO in StructchaAnalysisFile class:
         1.  Change to find locations of all four main strings in the analysisFile string vector, these being header section open,
             header section close, data section open and close (for example "[[StructchaAnalysis<<HEADER]]")
-        2.  
+        2.  Make method to read both HEADER and DATA information 
     */
     StructchaAnalysisFile(std::vector<string> analysisFile)
     {
         // will deal with error messages later string errorMessage = "No errors found"; // initiate and error message
-        int errorNum = 0; // initiate an error code
+        
 
         // ---Draft error numbers for errorNum below for reference
         // 0 = no error;
@@ -48,18 +50,18 @@ public:
             string s = "";
             int i = 1;
             int dataLineCount = analysisFile.size();
-            while (analysisFile[i].compare("[[StructchaAnalysis>>HEADER]]") != 0 && i < dataLineCount)
+            while (analysisFile[i].compare("[[StructchaAnalysis>>HEADER]]") != 0 && i < dataLineCount && errorNum == 0)
             {
                 s = analysisFile[i];
-                cout << "HL: " << s << endl;
+                setHeaderParameter(s);
                 i++;
             }
-            if (i >= dataLineCount)
+            if (i >= dataLineCount && errorNum == 0)
             {
                 //if no header close string found set error number
                 errorNum = 2;
             }
-            else
+            else if (errorNum == 0)
             {
                 i++;
                 // Then continues into the data section of the .scan file and extracts relevant information
@@ -88,6 +90,31 @@ public:
             errorNum = 1;
         }
         cout << "Error number : " << errorNum << endl;
+    }
+
+    void setHeaderParameter(string rawHeaderLine)
+    {
+        //string test = rawHeaderLine.substr(0, 7);
+        if (rawHeaderLine.substr(0, 7) == "[NAME]:")
+        {
+            JobName = rawHeaderLine.substr(7);
+        }
+        else if (rawHeaderLine.substr(0, 10) == "[COMPANY]:")
+        {
+            Company = rawHeaderLine.substr(10);
+        }
+        else if (rawHeaderLine.substr(0,7) == "[USER]:")
+        {
+            User = rawHeaderLine.substr(7);
+        }
+        else if (rawHeaderLine.substr(0,7) == "[TYPE]:")
+        {
+            Type = rawHeaderLine.substr(7);
+        }
+        else
+        {
+            errorNum = 5;
+        }
     }
 };
 
