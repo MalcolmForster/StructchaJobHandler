@@ -2,6 +2,7 @@
 #include <iostream>
 #include <variant>
 #include <string.h>
+#include "analysis_test.hpp"
 
 using namespace std;
 
@@ -67,16 +68,19 @@ public:
                 // Then continues into the data section of the .scan file and extracts relevant information
                 if (analysisFile[i].compare("[[StructchaAnalysis<<DATA]]") == 0)
                 {
+                    vector<string> dataVector;
                     i++;
                     while (analysisFile[i].compare("[[StructchaAnalysis>>DATA]]") != 0 && i < dataLineCount)
                     {
                         s = analysisFile[i];
-                        cout << "DL: " << s << endl;
+                        dataVector.push_back(s);
+                        //cout << "DL: " << s << endl;
                         i++;
                     }
                     if(analysisFile[dataLineCount-1].compare("[[StructchaAnalysis>>DATA]]") != 0) {
                         errorNum = 4;
-                    } 
+                    }
+                    setDataInfo(dataVector);
                 }
                 else
                 {
@@ -92,6 +96,7 @@ public:
         cout << "Error number : " << errorNum << endl;
     }
 
+    //Set this classes parameters based on information received in the file header
     void setHeaderParameter(string rawHeaderLine)
     {
         //string test = rawHeaderLine.substr(0, 7);
@@ -116,7 +121,18 @@ public:
             errorNum = 5;
         }
     }
+
+    // Creates the analysis data set to match the type found in file header
+    void setDataInfo(vector<string> analysisData) {    
+
+        if(this -> Type == "Test") {
+            StructchaAnalysisTest AnalysisData = StructchaAnalysisTest(analysisData);
+        } else {
+            cout << "Type not found";
+        }
+    }
 };
+
 
 // class TestAnalysisFile: public StructchaAnalysisFile {
 //     public:

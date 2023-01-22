@@ -42,7 +42,10 @@ int main() {
     StructchaAnalysisFile saf = setAnalysisFile(fileLines); // sets the Analysis object according to the analysis type.
     tempFile.close();
 
-    cout << saf.JobName << ", " << saf.Company << ", " << saf.User << ", " << saf.Type << endl;
+    //cout << saf.JobName << ", " << saf.Company << ", " << saf.User << ", " << saf.Type << endl;
+
+    
+
 
     return 0;
 }
