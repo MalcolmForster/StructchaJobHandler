@@ -21,7 +21,6 @@
 // End of Header of .scan file
 [[StructchaAnalysis>>HEADER]]
 
-
 // Start of Data, this is specific to the file that is being analyzed
 [[StructchaAnalysis<<DATA]]
 
