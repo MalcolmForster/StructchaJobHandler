@@ -21,14 +21,13 @@
 // End of Header of .scan file
 [[StructchaAnalysis>>HEADER]]
 
-
 // Start of Data, this is specific to the file that is being analyzed
 [[StructchaAnalysis<<DATA]]
 
 //For this test job type the software will create matrices based on a NUMBER, two formulas, and a SIZE.
 [NUMBER]:67
 [FORMULA1]:num^3
-[FORMULA2]:(num * 3) / 8
+[FORMULA2]:num*3/8
 [SIZE]:20
 
 // End of Data
