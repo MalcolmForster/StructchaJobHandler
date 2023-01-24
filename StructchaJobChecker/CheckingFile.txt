@@ -27,7 +27,7 @@
 
 //For this test job type the software will create matrices based on a NUMBER, two formulas, and a SIZE.
 [NUMBER]:67
-[FORMULA1]:sqrt(num)
+[FORMULA1]:num^3
 [FORMULA2]:(num * 3) / 8
 [SIZE]:20
 

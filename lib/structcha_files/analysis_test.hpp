@@ -2,6 +2,7 @@
 //This can be used by both the analysis_test.hpp as well as other header/source files
 #include <string.h>
 #include <vector>
+#include <math.h>
 
 using namespace std;
 
@@ -11,8 +12,8 @@ public:
     bool DataError = false;
     int Number = 0;
     int Size = 0;
-    double array1;
-    double array2;
+    double array1[];
+    double array2[];
 
     // Constructor receives the string vector.
     StructchaAnalysisTest(vector<string> analysisVector)
@@ -29,11 +30,11 @@ public:
             }
             else if (rawHeaderLine.substr(0, 11) == "[FORMULA1]:")
             {
-                double array1[Size] = calculateArray(rawHeaderLine.substr(11), Number);
+                double array1[Size] = calculateArray(rawHeaderLine.substr(11), Number, Size);
             }
             else if (rawHeaderLine.substr(0, 11) == "[FORMULA2]:")
             {
-                double array2[Size] = calculateArray(rawHeaderLine.substr(11), Number);
+                double array2[Size] = calculateArray(rawHeaderLine.substr(11), Number, Size);
             }
             else
             {
@@ -44,22 +45,59 @@ public:
     };
 
 private:
-    array<string,Size> calculateArray(string formula, int Number)
+    double[] calculateArray(string formula, int Number, int Size)
     {
         int i = 0;
-        while (i < formula.length())
-        {
-            if (formula.substr(i,3) == "num")
-            {
-                i = i + 3;
-            }
-            else if (formula.substr(i,1) == "^")
-            {
+        int lengthOfString = formula.length();
 
-            } else if (formula.substr(i,1) == "*") {
-
-            } else if (formula.substr(i,1) == "/") {
-                
+        while(n < lengthOfString) {
+            if (formula[i] == ' ' || formula[i] == '_')
+            {
+                formula[i] = '';
+                lengthOfString = lengthOfString--;
+            } else {
+                n++;
             }
         }
+
+        vector<double> tempVec;
+
+        for (int s = 0; s < Size; s++) {
+            i = 0;
+            double cur = 0;
+            while (i < formula.length())
+            {
+                string orderOfOps = "";
+                if (formula.substr(i,3) == "num")
+                {
+                    cur=cur+(formula.stoi(substr(i,3))*s);
+                    i = i + 3;
+                }
+                else if (formula.substr(i,1) == "^")
+                {
+                    cur = power(cur,nextNum(formula[i:],));
+                }
+                else if (formula.substr(i,1) == "*")
+                {
+                    cur = cur * (formula.substr(i+1,1));
+                }
+                else if (formula.substr(i,1) == "/")
+                {
+                    cur = cur / formula.substr(i+1,1);
+                }
+            }
+            tempVec.push_back(cur);
+        }
+
+        double returnArray[tempVec.size()];
+        return copy(tempVec.begin(), tempVec.end(), returnArray);    
+    }
+
+    double nextNum(string formSec, double numberInUse) {
+        if(formSec.substr(0,3) == "num") {
+            return numberInUse;
+        } else {
+            return stod(formSec.substr(i+1,1));
+        }
+    }
 };
